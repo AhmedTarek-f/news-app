@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:news_app/core/constants/app_colors.dart';
 import 'package:news_app/core/constants/app_icons.dart';
 import 'package:news_app/core/constants/app_text.dart';
+import 'package:news_app/core/router/route_names.dart';
 import 'package:news_app/core/shimmer/shimmer_effect.dart';
 import 'package:news_app/features/home/data/models/home_card_model.dart';
 
-class RightContentContainer extends StatelessWidget {
+class RightContentContainer extends ConsumerWidget {
   const RightContentContainer({super.key, required this.cardData});
   final HomeCardModel cardData;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     final bool isDarkMode =
         Theme.of(context).colorScheme.brightness == Brightness.dark;
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(
+          context,
+        ).pushNamed(RouteNames.news, arguments: cardData.cardName);
+      },
       child: RPadding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Container(
