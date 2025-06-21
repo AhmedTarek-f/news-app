@@ -19,4 +19,21 @@ abstract final class AppText {
   static const String english = "English";
   static const String arabic = "Arabic";
   static const String language = "Language";
+  static const String viewFullArticle = "View Full Article";
+  static const String tryAgain = "Try again";
+
+  // Exceptions
+  static const String noResponseReceivedMessage =
+      "No response received or response is not in expected format.";
+  static const String error = "Error";
+  static const String unexpectedError = "Unexpected error:";
+  static const String unexpectedErrorOccurred = "Unexpected error occurred.";
+  static const String requestCancelled = "Request was cancelled.";
+  static const String receiveTimeout =
+      "Receive timeout, please try again later.";
+  static const String sendTimeout = "Send timeout, please try again later.";
+  static const String connectionTimeout =
+      "Connection timeout, please try again later.";
+  static const String networkError =
+      "Something went wrong. Please check your internet connection.";
 }

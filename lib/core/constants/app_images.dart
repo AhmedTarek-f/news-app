@@ -18,4 +18,7 @@ abstract final class AppImages {
   static const String scienceDark = "assets/images/science_dark.png";
   static const String sportDark = "assets/images/sport_dark.png";
   static const String technologyDark = "assets/images/technology_dark.png";
+
+  //animations
+  static const String emptyNewsAnimation = "assets/animations/empty_file.json";
 }
