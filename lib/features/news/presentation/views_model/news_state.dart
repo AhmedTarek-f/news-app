@@ -12,3 +12,12 @@ final class FetchNewsFailureState extends NewsState {
   FetchNewsFailureState({required this.error});
   final Failure error;
 }
+
+final class OpenUrlSuccessState extends NewsState {}
+
+final class OpenUrlLoadingState extends NewsState {}
+
+final class OpenUrlFailureState extends NewsState {
+  OpenUrlFailureState({required this.error});
+  final Failure error;
+}

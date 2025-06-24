@@ -6,7 +6,7 @@ part of 'news_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$newsNotifierHash() => r'0b2b217c803085d84b87dbef3a9e92404d202b78';
+String _$newsNotifierHash() => r'92abc3897621e67275ce37290160513c2491d4c8';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,9 +30,9 @@ class _SystemHash {
 }
 
 abstract class _$NewsNotifier extends BuildlessAutoDisposeNotifier<NewsState> {
-  late final String categoryId;
+  late final String? categoryId;
 
-  NewsState build(String categoryId);
+  NewsState build(String? categoryId);
 }
 
 /// See also [NewsNotifier].
@@ -45,7 +45,7 @@ class NewsNotifierFamily extends Family<NewsState> {
   const NewsNotifierFamily();
 
   /// See also [NewsNotifier].
-  NewsNotifierProvider call(String categoryId) {
+  NewsNotifierProvider call(String? categoryId) {
     return NewsNotifierProvider(categoryId);
   }
 
@@ -75,7 +75,7 @@ class NewsNotifierFamily extends Family<NewsState> {
 class NewsNotifierProvider
     extends AutoDisposeNotifierProviderImpl<NewsNotifier, NewsState> {
   /// See also [NewsNotifier].
-  NewsNotifierProvider(String categoryId)
+  NewsNotifierProvider(String? categoryId)
     : this._internal(
         () => NewsNotifier()..categoryId = categoryId,
         from: newsNotifierProvider,
@@ -99,7 +99,7 @@ class NewsNotifierProvider
     required this.categoryId,
   }) : super.internal();
 
-  final String categoryId;
+  final String? categoryId;
 
   @override
   NewsState runNotifierBuild(covariant NewsNotifier notifier) {
@@ -145,7 +145,7 @@ class NewsNotifierProvider
 // ignore: unused_element
 mixin NewsNotifierRef on AutoDisposeNotifierProviderRef<NewsState> {
   /// The parameter `categoryId` of this provider.
-  String get categoryId;
+  String? get categoryId;
 }
 
 class _NewsNotifierProviderElement
@@ -154,7 +154,7 @@ class _NewsNotifierProviderElement
   _NewsNotifierProviderElement(super.provider);
 
   @override
-  String get categoryId => (origin as NewsNotifierProvider).categoryId;
+  String? get categoryId => (origin as NewsNotifierProvider).categoryId;
 }
 
 // ignore_for_file: type=lint

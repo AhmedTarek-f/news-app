@@ -12,8 +12,8 @@ class NewsNotifier extends _$NewsNotifier {
   List<ArticleModel> allArticles = [];
   List<Source> allCategories = [];
   @override
-  NewsState build(String categoryId) {
-    fetchCategoryNews(category: categoryId);
+  NewsState build(String? categoryId) {
+    fetchCategoryNews(category: categoryId ?? "");
     return FetchNewsLoadingState();
   }
 
@@ -47,5 +47,14 @@ class NewsNotifier extends _$NewsNotifier {
     return allArticles
         .where((article) => article.source?.name == categoryName)
         .toList();
+  }
+
+  Future<void> launchInBrowserView(String url) async {
+    state = OpenUrlLoadingState();
+    var result = await NewsRepository.launchInBrowserView(url);
+    result.fold(
+      (failure) => state = OpenUrlFailureState(error: failure),
+      (success) => state = OpenUrlSuccessState(),
+    );
   }
 }
