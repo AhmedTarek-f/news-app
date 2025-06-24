@@ -1,16 +1,24 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:news_app/core/common_widgets/custom_elevated_button.dart';
+import 'package:news_app/core/common_widgets/loading_button.dart';
 import 'package:news_app/core/constants/app_colors.dart';
 import 'package:news_app/core/constants/app_text.dart';
+import 'package:news_app/core/loaders/loaders.dart';
 import 'package:news_app/core/shimmer/shimmer_effect.dart';
 import 'package:news_app/features/news/data/models/article/article_model.dart';
+import 'package:news_app/features/news/presentation/views_model/news_notifier.dart';
+import 'package:news_app/features/news/presentation/views_model/news_state.dart';
 
-class NewsDetailsSheetContent extends StatelessWidget {
+class NewsDetailsSheetContent extends ConsumerWidget {
   const NewsDetailsSheetContent({super.key, required this.articleData});
   final ArticleModel articleData;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final newsProvider = ref.watch(newsNotifierProvider(null).notifier);
+    final newsState = ref.watch(newsNotifierProvider(null));
     return Container(
       padding: REdgeInsets.all(8),
       margin: REdgeInsets.all(16),
@@ -54,23 +62,34 @@ class NewsDetailsSheetContent extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
           ),
           const RSizedBox(height: 8),
-          RSizedBox(
-            width: ScreenUtil().screenWidth,
-            height: 56,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadiusGeometry.circular(16.r),
-                ),
-              ),
-              onPressed: () {},
-              child: Text(
-                AppText.viewFullArticle,
-                style: Theme.of(
-                  context,
-                ).textTheme.bodyLarge?.copyWith(letterSpacing: 0.22),
-              ),
-            ),
+          LayoutBuilder(
+            builder: (_, __) {
+              if (newsState is OpenUrlLoadingState) {
+                return const LoadingButton();
+              } else if (newsState is OpenUrlFailureState) {
+                Loaders.showErrorMessage(
+                  message: newsState.error.errorMessage,
+                  context: context,
+                );
+                return CustomElevatedButton(
+                  buttonTitle: AppText.viewFullArticle,
+                  onPressed: () async {
+                    await newsProvider.launchInBrowserView(
+                      articleData.url ?? "",
+                    );
+                  },
+                );
+              } else {
+                return CustomElevatedButton(
+                  buttonTitle: AppText.viewFullArticle,
+                  onPressed: () async {
+                    await newsProvider.launchInBrowserView(
+                      articleData.url ?? "",
+                    );
+                  },
+                );
+              }
+            },
           ),
         ],
       ),
