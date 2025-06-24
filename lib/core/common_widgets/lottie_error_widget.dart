@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
+import 'package:news_app/core/common_widgets/custom_elevated_button.dart';
 import 'package:news_app/core/constants/app_images.dart';
 import 'package:news_app/core/constants/app_text.dart';
 
@@ -49,25 +50,17 @@ class LottieErrorWidget extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const RSizedBox(height: 32),
-            RSizedBox(
+            CustomElevatedButton(
+              onPressed: onTryAgain,
+              buttonTitle: AppText.tryAgain,
               width: ScreenUtil().screenWidth * 0.9,
-              height: 56,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusGeometry.circular(16.r),
-                  ),
-                ),
-                onPressed: onTryAgain,
-                child: Text(
-                  AppText.tryAgain,
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    letterSpacing: 0.22,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                ),
+              titleStyle: Theme.of(context).textTheme.titleLarge?.copyWith(
+                color: Theme.of(context).colorScheme.primary,
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                letterSpacing: 0.22,
               ),
+              backgroundColor: Theme.of(context).colorScheme.inversePrimary,
             ),
           ],
         ),

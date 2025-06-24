@@ -10,13 +10,13 @@ class HomeCardsList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final homeProv = ref.watch(homeProvider);
+    final cardsList = ref.read(homeProvider);
     return SliverList.separated(
       itemBuilder: (_, index) => index.isEven
-          ? RightContentContainer(cardData: homeProv.cardsList[index])
-          : LeftContentContainer(cardData: homeProv.cardsList[index]),
+          ? RightContentContainer(cardData: cardsList[index])
+          : LeftContentContainer(cardData: cardsList[index]),
       separatorBuilder: (_, __) => const RSizedBox(height: 16),
-      itemCount: homeProv.cardsList.length,
+      itemCount: cardsList.length,
     );
   }
 }
