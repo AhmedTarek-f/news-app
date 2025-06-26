@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:news_app/core/constants/app_icons.dart';
+import 'package:news_app/core/router/route_names.dart';
 
 class NewsSliverAppBar extends StatelessWidget {
   const NewsSliverAppBar({super.key});
@@ -21,7 +22,9 @@ class NewsSliverAppBar extends StatelessWidget {
         Padding(
           padding: REdgeInsetsDirectional.only(end: 6),
           child: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed(RouteNames.search);
+            },
             icon: SvgPicture.asset(
               isDarkMode ? AppIcons.searchDark : AppIcons.searchLight,
               width: 24.r,
