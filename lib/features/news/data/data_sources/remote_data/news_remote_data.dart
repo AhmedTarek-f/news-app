@@ -18,7 +18,7 @@ abstract class NewsRemoteData {
     }
     var result = await ApiService.getRequest(
       endpoint: "/top-headlines",
-      queryParams: {"category": category.toLowerCase(), "country": "us"},
+      queryParams: {"category": category.toLowerCase()},
     );
     return result.fold((failure) => left(failure), (categoryData) {
       final listOfArticles = (categoryData.data["articles"] as List)
