@@ -54,6 +54,11 @@ abstract class AppTheme {
         color: AppColors.black,
       ),
     ),
+    textSelectionTheme: TextSelectionThemeData(
+      cursorColor: AppColors.black,
+      selectionHandleColor: AppColors.black,
+      selectionColor: AppColors.black.withValues(alpha: 0.2),
+    ),
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -106,6 +111,11 @@ abstract class AppTheme {
         fontWeight: FontWeight.w500,
         color: AppColors.white,
       ),
+    ),
+    textSelectionTheme: TextSelectionThemeData(
+      cursorColor: AppColors.white,
+      selectionHandleColor: AppColors.white,
+      selectionColor: AppColors.white.withValues(alpha: 0.2),
     ),
   );
 }
