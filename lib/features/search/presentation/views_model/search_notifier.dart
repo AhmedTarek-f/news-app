@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/features/news/data/models/article/article_model.dart';
-import 'package:news_app/features/search/data/repositories/search_repository.dart';
+import 'package:news_app/features/search/domain/repositories/search_repository.dart';
+import 'package:news_app/features/search/presentation/views_model/search_providers.dart';
 import 'package:news_app/features/search/presentation/views_model/search_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -13,11 +14,12 @@ class SearchNotifier extends _$SearchNotifier {
   int page = 1;
   late final ScrollController scrollController;
   late final TextEditingController searchController;
+  late final SearchRepository searchRepo;
 
   @override
   SearchState build() {
     onInit();
-
+    searchRepo = ref.watch(searchRepositoryProvider);
     ref.onDispose(() {
       searchController.dispose();
       scrollController.dispose();
@@ -44,7 +46,7 @@ class SearchNotifier extends _$SearchNotifier {
     if (searchInWord != null && searchInWord.trim() != "") {
       previousSearchWord = searchInWord;
       if (allArticles.isEmpty) state = FetchNewsLoadingState();
-      var result = await SearchRepository.fetchSearchArticles(
+      var result = await searchRepo.fetchSearchArticles(
         searchKeyword: searchInWord,
         page: page,
       );

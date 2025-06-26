@@ -3,7 +3,8 @@ import 'package:news_app/core/exceptions/dio_exceptions.dart';
 import 'package:news_app/core/exceptions/failure.dart';
 import 'package:news_app/features/news/data/models/article/article_model.dart';
 import 'package:news_app/features/news/data/models/article/source.dart';
-import 'package:news_app/features/news/data/repositories/news_repository.dart';
+import 'package:news_app/features/news/domain/repositories/news_repository.dart';
+import 'package:news_app/features/news/presentation/views_model/news_providers.dart';
 import 'package:news_app/features/news/presentation/views_model/news_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -15,14 +16,16 @@ class NewsNotifier extends _$NewsNotifier {
   List<List<ArticleModel>> categoryArticlesList = [];
   List<ArticleModel> allArticles = [];
   List<Source> allCategories = [];
+  late final NewsRepository newsRepo;
   @override
   NewsState build(String? categoryId) {
+    newsRepo = ref.watch(newsRepositoryProvider);
     fetchCategoryNews(category: categoryId ?? "");
     return FetchNewsLoadingState();
   }
 
   Future<void> fetchCategoryNews({required String category}) async {
-    var result = await NewsRepository.fetchCategoryArticles(category: category);
+    var result = await newsRepo.fetchCategoryArticles(category: category);
     result.fold((failure) => state = FetchNewsFailureState(error: failure), (
       articlesData,
     ) {
