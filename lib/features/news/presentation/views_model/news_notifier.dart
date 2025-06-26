@@ -1,8 +1,12 @@
+import 'package:dartz/dartz.dart';
+import 'package:news_app/core/exceptions/dio_exceptions.dart';
+import 'package:news_app/core/exceptions/failure.dart';
 import 'package:news_app/features/news/data/models/article/article_model.dart';
 import 'package:news_app/features/news/data/models/article/source.dart';
 import 'package:news_app/features/news/data/repositories/news_repository.dart';
 import 'package:news_app/features/news/presentation/views_model/news_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 part 'news_notifier.g.dart';
 
@@ -51,10 +55,19 @@ class NewsNotifier extends _$NewsNotifier {
 
   Future<void> launchInBrowserView(String url) async {
     state = OpenUrlLoadingState();
-    var result = await NewsRepository.launchInBrowserView(url);
+    var result = await tryLaunchInBrowserView(url);
     result.fold(
       (failure) => state = OpenUrlFailureState(error: failure),
       (success) => state = OpenUrlSuccessState(),
     );
+  }
+
+  Future<Either<Failure, void>> tryLaunchInBrowserView(String url) async {
+    try {
+      await launchUrl(Uri.parse(url), mode: LaunchMode.inAppBrowserView);
+      return right(null);
+    } catch (e) {
+      return left(DioExceptions(errorMessage: e.toString()));
+    }
   }
 }
