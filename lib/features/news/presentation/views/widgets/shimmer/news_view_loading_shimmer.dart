@@ -4,15 +4,15 @@ import 'package:news_app/features/news/presentation/views/widgets/shimmer/catego
 import 'package:news_app/features/news/presentation/views/widgets/shimmer/news_list_shimmer.dart';
 
 class NewsViewLoadingShimmer extends StatelessWidget {
-  const NewsViewLoadingShimmer({super.key});
-
+  const NewsViewLoadingShimmer({super.key, required this.category});
+  final String category;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 7,
       child: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
-          const NewsSliverAppBar(),
+          NewsSliverAppBar(category: category),
           const CategoriesSliverTabBarShimmer(),
         ],
         body: const TabBarView(

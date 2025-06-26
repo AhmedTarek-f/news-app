@@ -4,12 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/features/news/presentation/views_model/news_notifier.dart';
 
 class CategoriesSliverTabBar extends ConsumerWidget {
-  const CategoriesSliverTabBar({super.key});
-
+  const CategoriesSliverTabBar({super.key, required this.categoryId});
+  final String categoryId;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final String categoryId =
-        ModalRoute.of(context)?.settings.arguments as String;
     final newsProvider = ref.read(newsNotifierProvider(categoryId).notifier);
     return SliverAppBar(
       automaticallyImplyLeading: false,

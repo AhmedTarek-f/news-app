@@ -11,7 +11,10 @@ abstract class AppRouter {
         return MaterialPageRoute(builder: (_) => const HomeView());
 
       case RouteNames.news:
-        return MaterialPageRoute(builder: (_) => const NewsView());
+        final args = settings.arguments;
+        return MaterialPageRoute(
+          builder: (_) => NewsView(categoryId: args as String),
+        );
 
       case RouteNames.search:
         return MaterialPageRoute(builder: (_) => const SearchView());

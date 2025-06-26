@@ -5,17 +5,15 @@ import 'package:news_app/core/router/route_names.dart';
 import 'package:news_app/core/utils/constants/app_icons.dart';
 
 class NewsSliverAppBar extends StatelessWidget {
-  const NewsSliverAppBar({super.key});
-
+  const NewsSliverAppBar({super.key, required this.category});
+  final String category;
   @override
   Widget build(BuildContext context) {
-    final String appBarTitle =
-        ModalRoute.of(context)?.settings.arguments as String;
     final isDarkMode =
         Theme.of(context).colorScheme.brightness == Brightness.dark;
     return SliverAppBar(
       scrolledUnderElevation: 0,
-      title: Text(appBarTitle, style: Theme.of(context).textTheme.titleLarge),
+      title: Text(category, style: Theme.of(context).textTheme.titleLarge),
       toolbarHeight: 40.h,
       centerTitle: true,
       actions: [

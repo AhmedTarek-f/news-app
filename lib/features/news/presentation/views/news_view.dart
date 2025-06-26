@@ -7,19 +7,17 @@ import 'package:news_app/features/news/presentation/views_model/news_notifier.da
 import 'package:news_app/features/news/presentation/views_model/news_state.dart';
 
 class NewsView extends ConsumerWidget {
-  const NewsView({super.key});
-
+  const NewsView({super.key, required this.categoryId});
+  final String categoryId;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final String categoryId =
-        ModalRoute.of(context)?.settings.arguments as String;
     final newsState = ref.watch(newsNotifierProvider(categoryId));
     final newsProvider = ref.watch(newsNotifierProvider(categoryId).notifier);
     return Scaffold(
       body: LayoutBuilder(
         builder: (_, __) {
           if (newsState is FetchNewsSuccessState) {
-            return const NewsViewBody();
+            return NewsViewBody(categoryId: categoryId);
           } else if (newsState is FetchNewsFailureState) {
             return LottieErrorWidget(
               errorMessage: newsState.error.errorMessage,
@@ -28,7 +26,7 @@ class NewsView extends ConsumerWidget {
                   newsProvider.fetchCategoryNews(category: categoryId),
             );
           } else {
-            return const NewsViewLoadingShimmer();
+            return NewsViewLoadingShimmer(category: categoryId);
           }
         },
       ),

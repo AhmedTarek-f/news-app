@@ -6,19 +6,17 @@ import 'package:news_app/features/news/presentation/views/widgets/news_sliver_ap
 import 'package:news_app/features/news/presentation/views_model/news_notifier.dart';
 
 class NewsViewBody extends ConsumerWidget {
-  const NewsViewBody({super.key});
-
+  const NewsViewBody({super.key, required this.categoryId});
+  final String categoryId;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final String categoryId =
-        ModalRoute.of(context)?.settings.arguments as String;
     final newsProvider = ref.read(newsNotifierProvider(categoryId).notifier);
     return DefaultTabController(
       length: newsProvider.allCategories.length,
       child: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
-          const NewsSliverAppBar(),
-          const CategoriesSliverTabBar(),
+          NewsSliverAppBar(category: categoryId),
+          CategoriesSliverTabBar(categoryId: categoryId),
         ],
         body: TabBarView(
           physics: const BouncingScrollPhysics(),
