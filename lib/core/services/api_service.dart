@@ -1,11 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:news_app/core/constants/api_keys.dart';
 import 'package:news_app/core/exceptions/dio_exceptions.dart';
 import 'package:news_app/core/exceptions/failure.dart';
 
-abstract class ApiService {
-  static final Dio _dio = Dio(
+@singleton
+class ApiService {
+  final Dio _dio = Dio(
     BaseOptions(
       baseUrl: "https://newsapi.org/v2",
       headers: {
@@ -17,7 +19,7 @@ abstract class ApiService {
   );
 
   // GET Request
-  static Future<Either<Failure, Response>> getRequest({
+  Future<Either<Failure, Response>> getRequest({
     required String endpoint,
     Map<String, dynamic>? queryParams,
     Map<String, String>? headers,
