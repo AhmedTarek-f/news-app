@@ -17,7 +17,7 @@ class NewsDetailsSheetContent extends ConsumerWidget {
   final ArticleModel articleData;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final newsProvider = ref.watch(newsNotifierProvider(null).notifier);
+    final newsProvider = ref.read(newsNotifierProvider(null).notifier);
     final newsState = ref.watch(newsNotifierProvider(null));
     return Container(
       padding: REdgeInsets.all(8),
