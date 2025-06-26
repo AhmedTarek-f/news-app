@@ -18,7 +18,7 @@ class NewsApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
-        routes: AppRouter.routes,
+        onGenerateRoute: AppRouter.onGenerateRoute,
         initialRoute: RouteNames.home,
       ),
     );

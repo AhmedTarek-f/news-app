@@ -5,9 +5,19 @@ import 'package:news_app/features/news/presentation/views/news_view.dart';
 import 'package:news_app/features/search/presentation/views/search_view.dart';
 
 abstract class AppRouter {
-  static Map<String, Widget Function(BuildContext)> routes = {
-    RouteNames.home: (_) => const HomeView(),
-    RouteNames.news: (_) => const NewsView(),
-    RouteNames.search: (_) => const SearchView(),
-  };
+  static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case RouteNames.home:
+        return MaterialPageRoute(builder: (_) => const HomeView());
+
+      case RouteNames.news:
+        return MaterialPageRoute(builder: (_) => const NewsView());
+
+      case RouteNames.search:
+        return MaterialPageRoute(builder: (_) => const SearchView());
+
+      default:
+        return MaterialPageRoute(builder: (_) => const HomeView());
+    }
+  }
 }
