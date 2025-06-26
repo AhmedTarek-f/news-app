@@ -1,5 +1,5 @@
 abstract class RouteNames {
-  static const String home = "/HomeView";
-  static const String news = "/NewsView";
-  static const String search = "/SearchView";
+  static const String home = "/homeView";
+  static const String news = "/newsView";
+  static const String search = "/searchView";
 }
