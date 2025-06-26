@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:news_app/core/exceptions/dio_exceptions.dart';
-import 'package:news_app/core/exceptions/failure.dart';
+import 'package:news_app/core/utils/exceptions/dio_exceptions.dart';
+import 'package:news_app/core/utils/exceptions/failure.dart';
 import 'package:news_app/features/news/data/models/article/article_model.dart';
 import 'package:news_app/features/news/data/models/article/source.dart';
 import 'package:news_app/features/news/domain/repositories/news_repository.dart';

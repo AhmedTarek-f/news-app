@@ -1,4 +1,4 @@
-import 'package:news_app/core/constants/app_images.dart';
+import 'package:news_app/core/utils/constants/app_images.dart';
 import 'package:news_app/features/home/data/models/home_card_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

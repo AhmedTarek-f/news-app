@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:news_app/core/constants/app_icons.dart';
 import 'package:news_app/core/router/route_names.dart';
+import 'package:news_app/core/utils/constants/app_icons.dart';
 
 class NewsSliverAppBar extends StatelessWidget {
   const NewsSliverAppBar({super.key});

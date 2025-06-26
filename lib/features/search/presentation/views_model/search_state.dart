@@ -1,4 +1,4 @@
-import 'package:news_app/core/exceptions/failure.dart';
+import 'package:news_app/core/utils/exceptions/failure.dart';
 
 sealed class SearchState {}
 

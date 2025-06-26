@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:news_app/core/constants/api_keys.dart';
-import 'package:news_app/core/exceptions/dio_exceptions.dart';
-import 'package:news_app/core/exceptions/failure.dart';
+import 'package:news_app/core/utils/constants/api_keys.dart';
+import 'package:news_app/core/utils/exceptions/dio_exceptions.dart';
+import 'package:news_app/core/utils/exceptions/failure.dart';
 
 @singleton
 class ApiService {

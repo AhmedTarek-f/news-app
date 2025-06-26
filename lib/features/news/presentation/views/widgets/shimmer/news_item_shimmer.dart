@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:news_app/core/shimmer/shimmer_effect.dart';
+import 'package:news_app/core/utils/shimmer/shimmer_effect.dart';
 
 class NewsItemShimmer extends StatelessWidget {
   const NewsItemShimmer({super.key});

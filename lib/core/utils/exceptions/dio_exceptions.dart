@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:news_app/core/constants/app_text.dart';
-import 'package:news_app/core/exceptions/failure.dart';
+import 'package:news_app/core/utils/constants/app_text.dart';
+import 'package:news_app/core/utils/exceptions/failure.dart';
 
 class DioExceptions extends Failure {
   DioExceptions({required super.errorMessage});

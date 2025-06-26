@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:news_app/core/loaders/loaders.dart';
+import 'package:news_app/core/utils/loaders/loaders.dart';
 import 'package:news_app/features/news/presentation/views/widgets/shimmer/news_list_shimmer.dart';
 import 'package:news_app/features/search/presentation/views/widgets/news_search_list_view.dart';
 import 'package:news_app/features/search/presentation/views/widgets/search_app_bar.dart';

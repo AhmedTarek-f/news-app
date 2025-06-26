@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:news_app/core/common_widgets/custom_elevated_button.dart';
-import 'package:news_app/core/constants/app_images.dart';
-import 'package:news_app/core/constants/app_text.dart';
+import 'package:news_app/core/utils/constants/app_images.dart';
+import 'package:news_app/core/utils/constants/app_text.dart';
 
 class LottieErrorWidget extends StatelessWidget {
   const LottieErrorWidget({

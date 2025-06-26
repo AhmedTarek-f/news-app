@@ -27,7 +27,7 @@ import '../../features/search/data/repositories/search_repository_impl.dart'
     as _i1017;
 import '../../features/search/domain/repositories/search_repository.dart'
     as _i357;
-import '../services/api_service.dart' as _i137;
+import '../utils/services/api_service.dart' as _i671;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -36,21 +36,21 @@ extension GetItInjectableX on _i174.GetIt {
     _i526.EnvironmentFilter? environmentFilter,
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
-    gh.singleton<_i137.ApiService>(() => _i137.ApiService());
-    gh.factory<_i533.SearchRemoteData>(
-      () => _i1002.SearchRemoteDataImpl(apiService: gh<_i137.ApiService>()),
-    );
+    gh.singleton<_i671.ApiService>(() => _i671.ApiService());
     gh.factory<_i405.NewsRemoteData>(
-      () => _i1011.NewsRemoteDataImpl(apiService: gh<_i137.ApiService>()),
+      () => _i1011.NewsRemoteDataImpl(apiService: gh<_i671.ApiService>()),
     );
-    gh.factory<_i258.NewsRepository>(
-      () =>
-          _i164.NewsRepositoryImpl(newsRemoteData: gh<_i405.NewsRemoteData>()),
+    gh.factory<_i533.SearchRemoteData>(
+      () => _i1002.SearchRemoteDataImpl(apiService: gh<_i671.ApiService>()),
     );
     gh.factory<_i357.SearchRepository>(
       () => _i1017.SearchRepositoryImpl(
         searchRemoteData: gh<_i533.SearchRemoteData>(),
       ),
+    );
+    gh.factory<_i258.NewsRepository>(
+      () =>
+          _i164.NewsRepositoryImpl(newsRemoteData: gh<_i405.NewsRemoteData>()),
     );
     return this;
   }

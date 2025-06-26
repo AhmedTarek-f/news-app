@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:news_app/core/constants/app_icons.dart';
-import 'package:news_app/core/constants/app_text.dart';
+import 'package:news_app/core/utils/constants/app_icons.dart';
+import 'package:news_app/core/utils/constants/app_text.dart';
 import 'package:news_app/features/search/presentation/views_model/search_notifier.dart';
 
 class SearchAppBar extends ConsumerWidget {

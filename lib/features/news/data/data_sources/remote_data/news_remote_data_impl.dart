@@ -1,10 +1,10 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:news_app/core/constants/app_text.dart';
-import 'package:news_app/core/exceptions/dio_exceptions.dart';
-import 'package:news_app/core/exceptions/failure.dart';
-import 'package:news_app/core/services/api_service.dart';
+import 'package:news_app/core/utils/constants/app_text.dart';
+import 'package:news_app/core/utils/exceptions/dio_exceptions.dart';
+import 'package:news_app/core/utils/exceptions/failure.dart';
+import 'package:news_app/core/utils/services/api_service.dart';
 import 'package:news_app/features/news/data/data_sources/remote_data/news_remote_data.dart';
 import 'package:news_app/features/news/data/models/article/article_model.dart';
 

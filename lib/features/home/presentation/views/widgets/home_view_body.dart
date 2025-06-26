@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:news_app/core/constants/app_text.dart';
+import 'package:news_app/core/utils/constants/app_text.dart';
 import 'package:news_app/features/home/presentation/views/widgets/home_cards_list.dart';
 
 class HomeViewBody extends StatelessWidget {

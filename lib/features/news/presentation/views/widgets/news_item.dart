@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:news_app/core/shimmer/shimmer_effect.dart';
+import 'package:news_app/core/utils/shimmer/shimmer_effect.dart';
 import 'package:news_app/features/news/data/models/article/article_model.dart';
 import 'package:news_app/features/news/presentation/views/widgets/news_details_sheet_content.dart';
 import 'package:timeago/timeago.dart' as timeago;
