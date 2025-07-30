@@ -60,3 +60,5 @@ News App is a sleek and powerful Flutter application that provides users with re
 ## Download 📥
 
 Get the News app on your device:
+
+- [Download for Android](https://drive.google.com/file/d/1ra4yqloLUCffjG9feBapYcNzhptEbUxg/view?usp=sharing)
